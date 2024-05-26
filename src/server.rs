@@ -627,6 +627,10 @@ impl<T: AsyncRead + AsyncWrite + Unpin, A: Authentication> Socks5Socket<T, A> {
         Ok(())
     }
 
+    pub fn get_command(&self) -> &Option<Socks5Command> {
+        &self.cmd
+    }
+
     /// Execute the socks5 command that the client wants.
     async fn execute_command(&mut self) -> Result<()> {
         match &self.cmd {
