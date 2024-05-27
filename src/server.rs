@@ -536,7 +536,7 @@ impl<T: AsyncRead + AsyncWrite + Unpin, A: Authentication> Socks5Socket<T, A> {
     }
 
     /// Reply error to the client with the reply code according to the RFC.
-    async fn reply_error(&mut self, error: &ReplyError) -> Result<()> {
+    pub async fn reply_error(&mut self, error: &ReplyError) -> Result<()> {
         let reply = new_reply(error, "0.0.0.0:0".parse().unwrap());
         debug!("reply error to be written: {:?}", &reply);
 
